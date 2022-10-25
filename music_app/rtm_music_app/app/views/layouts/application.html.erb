@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Melodionia</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application" %>
+  </head>
+  <header>
+  <h2>Melodionia</h2>
+  <nav>
+    <% if logged_in? %>
+      <form action="<%= session_url %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Logout">
+      </form>
+    <% else %>
+      <a href="<%= new_user_url %>">Sign Up</a>
+      <a href="<%= new_session_url %>">Login</a>
+    <% end %>
+  </nav>
+  </header>
+  <body>
+
+    <%= yield %>
+  </body>
+</html>
